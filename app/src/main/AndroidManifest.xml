@@ -13,6 +13,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".english_view_loader"
+            android:exported="false" />
+        <activity
+            android:name=".rhymes_view_loader"
+            android:exported="false" />
+        <activity
             android:name=".excercises_list_layout"
             android:exported="true" />
         <activity

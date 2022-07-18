@@ -34,19 +34,19 @@ public class excercises_list_layout extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
 
-        String arr[]={"Exidia Recommendations"};
+        String arr[]={"Edexia Trending"};
 
         int icons[]=
                 {
-                        R.drawable.finalimg1,
+                        R.drawable.img,
                 };
 
-        String arr1[]={"BreakFast Items","Fruits","Watches","Stationary Items","Beauty Products"};
+        String arr1[]={"Visual Rhymes","English Pronunciation","Watches","Stationary Items","Beauty Products"};
 
 
         int icons1[]={
-                R.drawable.img_5,
-                R.drawable.finalimag3,
+                R.drawable.img_1,
+                R.drawable.img_2,
                 R.drawable.finalimag2,
                 R.drawable.finalimag4,
                 R.drawable.finalimag5
@@ -64,10 +64,10 @@ public class excercises_list_layout extends AppCompatActivity {
                 R.drawable.starimagefinal,
         };
         String desc[]={
-                "Frequently Bought - 9 Products"
+                "Matika - Top Rated"
         };
         String desc2[]={
-                "3 Products","5 Products","8 Products","5 Products","3 Products"
+                "Nursery Rhymes","Learn English","8 Products","5 Products","3 Products"
         };
         recyclerView.setAdapter(new excercises_adapter(this,icons,icons2,arr,desc));
         recyclerView2.setAdapter(new excercises_adapter(this,icons1,icons3,arr1,desc2));

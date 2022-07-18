@@ -77,20 +77,22 @@ public class excercises_adapter extends RecyclerView.Adapter<excercises_adapter.
                 @Override
                 public void onClick(View view)
                 {
-                    if(textView.getText().toString().equals("Exidia Recommendations"))
+                    if(textView.getText().toString().equals("Edexia Trending"))
                     {
                         Intent intent = new Intent(context.getApplicationContext(),excercises_layout.class);
                         context.startActivity(intent);
                         incrementCart();
                     }
-                    else if(textView.getText().toString().equals("BreakFast Items"))
+                    else if(textView.getText().toString().equals("Visual Rhymes"))
                     {
-                        Toast.makeText(context,  "Item from Breakfast items is added to cart", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context.getApplicationContext(),rhymes_view_loader.class);
+                        context.startActivity(intent);
                         incrementCart();
                     }
-                    else if(textView.getText().toString().equals("Fruits"))
+                    else if(textView.getText().toString().equals("English Pronunciation"))
                     {
-                        Toast.makeText(context, "Item From Fruits is added to cart", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context.getApplicationContext(),english_view_loader.class);
+                        context.startActivity(intent);
                         incrementfruits++;
                         cartVal.setText(String.valueOf(incrementfruits));
                     }

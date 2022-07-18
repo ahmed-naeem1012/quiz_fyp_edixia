@@ -81,10 +81,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
             startActivity(new Intent(getContext(), excercises_list_layout.class));
-            Toast toast =   Toast.makeText(getContext(),
-                        "This is a message displayed in a Toast",
-                        Toast.LENGTH_SHORT);
-            toast.show();
+//            Toast toast =   Toast.makeText(getContext(),
+//                        "This is a message displayed in a Toast",
+//                        Toast.LENGTH_SHORT);
+//            toast.show();
             }
 
         });
