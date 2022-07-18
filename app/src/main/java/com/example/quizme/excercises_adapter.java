@@ -96,21 +96,24 @@ public class excercises_adapter extends RecyclerView.Adapter<excercises_adapter.
                         incrementfruits++;
                         cartVal.setText(String.valueOf(incrementfruits));
                     }
-                    else if(textView.getText().toString().equals("Watches"))
+                    else if(textView.getText().toString().equals("History Trends"))
                     {
-                        Toast.makeText(context, "Item From Watches is added to cart", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context.getApplicationContext(),history_view_loader.class);
+                        context.startActivity(intent);
                         incrementwatch++;
                         cartVal.setText(String.valueOf(incrementwatch));
                     }
-                    else if(textView.getText().toString().equals("Stationary Items"))
+                    else if(textView.getText().toString().equals("Science World"))
                     {
-                        Toast.makeText(context, "Item From Stationary Products is added to cart", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context.getApplicationContext(),science_view_holder.class);
+                        context.startActivity(intent);
                         incrementStat++;
                         cartVal.setText(String.valueOf(incrementStat));
                     }
-                    else if(textView.getText().toString().equals("Beauty Products"))
+                    else if(textView.getText().toString().equals("Alphabetic Skills"))
                     {
-                        Toast.makeText(context, "Item From Beauty Products is added to cart", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context.getApplicationContext(),alphabets_view_loader.class);
+                        context.startActivity(intent);
                         incrementbeaut++;
                         cartVal.setText(String.valueOf(incrementbeaut));
                     }

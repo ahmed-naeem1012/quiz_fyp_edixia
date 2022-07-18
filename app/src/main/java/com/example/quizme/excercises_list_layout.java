@@ -41,15 +41,15 @@ public class excercises_list_layout extends AppCompatActivity {
                         R.drawable.img,
                 };
 
-        String arr1[]={"Visual Rhymes","English Pronunciation","Watches","Stationary Items","Beauty Products"};
+        String arr1[]={"Visual Rhymes","English Pronunciation","History Trends","Science World","Alphabetic Skills"};
 
 
         int icons1[]={
                 R.drawable.img_1,
                 R.drawable.img_2,
-                R.drawable.finalimag2,
+                R.drawable.img_3,
                 R.drawable.finalimag4,
-                R.drawable.finalimag5
+                R.drawable.img_4
         };
 
 
@@ -67,7 +67,7 @@ public class excercises_list_layout extends AppCompatActivity {
                 "Matika - Top Rated"
         };
         String desc2[]={
-                "Nursery Rhymes","Learn English","8 Products","5 Products","3 Products"
+                "Nursery Rhymes","Learn English","History Classroom","Learnetic","ABCYa"
         };
         recyclerView.setAdapter(new excercises_adapter(this,icons,icons2,arr,desc));
         recyclerView2.setAdapter(new excercises_adapter(this,icons1,icons3,arr1,desc2));

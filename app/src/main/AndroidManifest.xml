@@ -13,6 +13,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".alphabets_view_loader"
+            android:exported="false" />
+        <activity
+            android:name=".science_view_holder"
+            android:exported="false" />
+        <activity
+            android:name=".history_view_loader"
+            android:exported="false" />
+        <activity
             android:name=".english_view_loader"
             android:exported="false" />
         <activity
