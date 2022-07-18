@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.wallet) {
-            Toast.makeText(this, "wallet is clicked.", Toast.LENGTH_SHORT).show();
+        if(item.getItemId() == R.id.Admin) {
+            Toast.makeText(this, "Admin Panel is clicked.", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
