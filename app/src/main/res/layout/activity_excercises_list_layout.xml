@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Exidia Recommendations"
+        android:text="EDEXIA Recommendations"
         android:textColor="#858080"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
