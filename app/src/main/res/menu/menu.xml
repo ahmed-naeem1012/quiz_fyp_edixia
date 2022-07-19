@@ -9,7 +9,7 @@
 
     <item android:id="@+id/wallet"
         android:title="My Score"
-        android:icon="@drawable/wallet"/>
+        android:icon="@drawable/ic_baseline_score_24"/>
 
     <item android:id="@+id/profile"
         android:title="Profile"

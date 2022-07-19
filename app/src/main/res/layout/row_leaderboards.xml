@@ -39,7 +39,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Mian Asad Ali"
+        android:text="Ihtisham ul Haq"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView7"
