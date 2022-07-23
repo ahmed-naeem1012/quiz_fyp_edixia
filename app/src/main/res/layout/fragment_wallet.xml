@@ -60,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_light"
+        android:visibility="gone"
         android:text="50.000 Score required to withdraw prize"
         android:textColor="@color/color_white"
         android:textSize="16sp"
@@ -75,7 +76,7 @@
         android:background="@drawable/textbox"
         android:drawableLeft="@drawable/ic_paypal"
         android:drawablePadding="10dp"
-
+        android:visibility="gone"
         android:ems="10"
         android:hint="Paypal Email Address"
         android:inputType="textPersonName"

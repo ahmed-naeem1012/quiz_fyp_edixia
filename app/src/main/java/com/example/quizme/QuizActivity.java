@@ -44,7 +44,7 @@ public class QuizActivity extends AppCompatActivity {
         Random random = new Random();
         final int rand = random.nextInt(12);
 
-        database.collection("categories")
+        database. collection("categories")
                 .document(catId)
                 .collection("questions")
                 .whereGreaterThanOrEqualTo("index", rand)
