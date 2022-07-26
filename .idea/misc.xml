@@ -18,6 +18,60 @@
         <entry key="..\:/QuizMe/app/src/main/res/layout/rowlayer1.xml" value="0.20416666666666666" />
         <entry key="..\:/QuizMe/app/src/main/res/menu/home_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/QuizMe/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_shopping_cart_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable-v24/option_wrong.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/background.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/background_bottom.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/background_orang.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/button_1.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/button_2.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/button_3.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/button_4.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_baseline_admin_panel_settings_24.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_baseline_score_24.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_dollar.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_paypal.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_question.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_share.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_timer.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/ic_trophy.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/option_right.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/option_unselected.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/orangeback.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/rounded_box.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/submit_btn.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/textbox.xml" value="0.148" />
+        <entry key="app/src/main/res/font/arizonia.xml" value="0.2740740740740741" />
+        <entry key="app/src/main/res/font/roboto_bold.xml" value="0.2740740740740741" />
+        <entry key="app/src/main/res/font/roboto_light.xml" value="0.2740740740740741" />
+        <entry key="app/src/main/res/layout/activity_adminpanel.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/layout/activity_alphabets_view_loader.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_english_pronunciation_view_loader.xml" value="0.21014492753623187" />
+        <entry key="app/src/main/res/layout/activity_english_view_loader.xml" value="0.15096251266464034" />
+        <entry key="app/src/main/res/layout/activity_excercises_layout.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_excercises_list_layout.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_history_view_loader.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2910598754882813" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_rhymes_view_loader.xml" value="0.15780141843971632" />
+        <entry key="app/src/main/res/layout/activity_science_view_holder.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_spinner.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/fragment_adminfragment.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/fragment_leaderboards.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/layout/fragment_wallet.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/item_category.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/lucky_wheel_layout.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/row_leaderboards.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/layout/rowlayer1.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/menu/home_menu.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.32447916666666665" />
       </map>
     </option>
   </component>
