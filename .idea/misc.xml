@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/drawable/button_2.xml" value="0.148" />
         <entry key="app/src/main/res/drawable/button_3.xml" value="0.148" />
         <entry key="app/src/main/res/drawable/button_4.xml" value="0.148" />
+        <entry key="app/src/main/res/drawable/delete_icon.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/ic_baseline_admin_panel_settings_24.xml" value="0.148" />
         <entry key="app/src/main/res/drawable/ic_baseline_score_24.xml" value="0.148" />
         <entry key="app/src/main/res/drawable/ic_dollar.xml" value="0.148" />
@@ -46,8 +47,9 @@
         <entry key="app/src/main/res/font/arizonia.xml" value="0.2740740740740741" />
         <entry key="app/src/main/res/font/roboto_bold.xml" value="0.2740740740740741" />
         <entry key="app/src/main/res/font/roboto_light.xml" value="0.2740740740740741" />
-        <entry key="app/src/main/res/layout/activity_adminpanel.xml" value="0.32447916666666665" />
+        <entry key="app/src/main/res/layout/activity_adminpanel.xml" value="0.3200469970703125" />
         <entry key="app/src/main/res/layout/activity_alphabets_view_loader.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_catitem.xml" value="0.3104166666666667" />
         <entry key="app/src/main/res/layout/activity_english_pronunciation_view_loader.xml" value="0.21014492753623187" />
         <entry key="app/src/main/res/layout/activity_english_view_loader.xml" value="0.15096251266464034" />
         <entry key="app/src/main/res/layout/activity_excercises_layout.xml" value="0.2776268115942029" />
