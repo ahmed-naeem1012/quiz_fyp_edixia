@@ -5,14 +5,21 @@
       <map>
         <entry key="..\:/QuizMe/app/src/main/res/drawable-v24/ic_baseline_shopping_cart_24.xml" value="0.18518518518518517" />
         <entry key="..\:/QuizMe/app/src/main/res/drawable/background_bottom.xml" value="0.18518518518518517" />
+        <entry key="..\:/QuizMe/app/src/main/res/layout/activity_alphabets_view_loader.xml" value="0.20416666666666666" />
         <entry key="..\:/QuizMe/app/src/main/res/layout/activity_excercises_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/QuizMe/app/src/main/res/layout/activity_excercises_list_layout.xml" value="0.20416666666666666" />
-        <entry key="..\:/QuizMe/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/QuizMe/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/QuizMe/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/QuizMe/app/src/main/res/layout/activity_quiz.xml" value="0.20416666666666666" />
+        <entry key="..\:/QuizMe/app/src/main/res/layout/activity_result.xml" value="0.20416666666666666" />
+        <entry key="..\:/QuizMe/app/src/main/res/layout/activity_rhymes_view_loader.xml" value="0.20416666666666666" />
         <entry key="..\:/QuizMe/app/src/main/res/layout/activity_signup.xml" value="0.20416666666666666" />
+        <entry key="..\:/QuizMe/app/src/main/res/layout/activity_spinner.xml" value="0.20416666666666666" />
         <entry key="..\:/QuizMe/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/QuizMe/app/src/main/res/layout/fragment_leaderboards.xml" value="0.20416666666666666" />
         <entry key="..\:/QuizMe/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
-        <entry key="..\:/QuizMe/app/src/main/res/layout/item_category.xml" value="0.20416666666666666" />
+        <entry key="..\:/QuizMe/app/src/main/res/layout/fragment_wallet.xml" value="0.20416666666666666" />
+        <entry key="..\:/QuizMe/app/src/main/res/layout/item_category.xml" value="0.1" />
         <entry key="..\:/QuizMe/app/src/main/res/layout/lucky_wheel_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/QuizMe/app/src/main/res/layout/row_leaderboards.xml" value="0.20416666666666666" />
         <entry key="..\:/QuizMe/app/src/main/res/layout/rowlayer1.xml" value="0.20416666666666666" />
