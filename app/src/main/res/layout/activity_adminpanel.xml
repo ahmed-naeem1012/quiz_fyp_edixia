@@ -66,25 +66,25 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewid"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="112dp"
-        tools:listitem="@layout/activity_catitem"
+        android:layout_height="550dp"
+        app:layout_constraintBottom_toTopOf="@+id/addCatB"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shimmer_view_container" />
+        app:layout_constraintTop_toBottomOf="@+id/shimmer_view_container"
 
+        app:layout_constraintVertical_bias="0.371"
+        tools:listitem="@layout/activity_catitem" />
 
     <Button
-        android:id="@+id/add"
-        android:layout_width="306dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="92dp"
-        android:background="@drawable/button_2"
+        android:id="@+id/addCatB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_light"
+        android:background="@color/colorPrimary"
         android:text="Add New Category"
         android:textColor="@color/color_white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewid" />
-
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

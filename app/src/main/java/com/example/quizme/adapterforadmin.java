@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -44,12 +46,23 @@ public class adapterforadmin extends RecyclerView.Adapter<adapterforadmin.Viewho
 
     public class Viewholder extends RecyclerView.ViewHolder {
          TextView quiz_category;
-         Button deleteB;
+         ImageView deleteB;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             quiz_category = itemView.findViewById(R.id.namecategory);
-//            deleteB = itemView.findViewById(R.id.deletecategory);
+            deleteB= itemView.findViewById(R.id.deletecategory);
+
+
+
+            deleteB.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View view) {
+                                               Toast.makeText(context, "Delete", Toast.LENGTH_SHORT).show();
+                                           }
+                                       }
+            );
+
         }
     }
 }

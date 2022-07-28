@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.quizme.databinding.FragmentLeaderboardsBinding;
@@ -31,6 +33,7 @@ public class adminpanel extends AppCompatActivity {
     ArrayList<adminuser> userarraylist;
     adapterforadmin adapterforadmin;
     FirebaseFirestore database;
+    Button addcategorybtn;
 
 
     @Override
@@ -41,6 +44,7 @@ public class adminpanel extends AppCompatActivity {
 
         recyclerview = findViewById(R.id.recyclerViewid);
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
+        addcategorybtn=findViewById(R.id.addCatB);
 
 
         database = FirebaseFirestore.getInstance();
@@ -52,10 +56,20 @@ public class adminpanel extends AppCompatActivity {
         loadData();
 
 
+
+        addcategorybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(adminpanel.this, addcategorypage.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void loadData() {
-        Toast.makeText(getApplicationContext(), "I am alive", Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -65,7 +79,7 @@ public class adminpanel extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                Toast.makeText(adminpanel.this, "I am trying", Toast.LENGTH_SHORT).show();
+
                 if (error != null){
                     Log.e("Firestore error",error.getMessage());
                     Toast.makeText(adminpanel.this, error.getMessage(), Toast.LENGTH_SHORT).show();
@@ -75,11 +89,10 @@ public class adminpanel extends AppCompatActivity {
 
 
                 for (DocumentChange dc : value.getDocumentChanges()) {
-                    Toast.makeText(adminpanel.this, "its ok", Toast.LENGTH_SHORT).show();
+
                     if (dc.getType() == DocumentChange.Type.ADDED) {
 //                        Toast.makeText(adminpanel.this, "its still ok", Toast.LENGTH_SHORT).show();
                         userarraylist.add(dc.getDocument().toObject(adminuser.class));
-                        Toast.makeText(adminpanel.this, "its still ok", Toast.LENGTH_SHORT).show();
 
                     }
                     adapterforadmin.notifyDataSetChanged();
