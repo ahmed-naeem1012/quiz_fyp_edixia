@@ -1,3 +1,5 @@
+
+
 package com.example.quizme;
 
 import androidx.annotation.NonNull;
@@ -8,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.ProgressDialog;
@@ -35,6 +38,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -45,8 +49,12 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 
 import id.zelory.compressor.Compressor;
 
@@ -64,8 +72,13 @@ public class addcategorypage extends AppCompatActivity {
     int Image_Request_Code = 7;
     ProgressDialog progressDialog;
 
-    private Uri imageuri;
+    private Uri         imageuri;
     private Bitmap compressor;
+
+    int hello=1;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+    String currentDateandTime = sdf.format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +86,7 @@ public class addcategorypage extends AppCompatActivity {
         setContentView(R.layout.activity_addcategorypage);
 
         storageReference = FirebaseStorage.getInstance().getReference("Images");
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Images");
         firestore=FirebaseFirestore.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
@@ -85,16 +99,8 @@ public class addcategorypage extends AppCompatActivity {
         progressDialog = new ProgressDialog(addcategorypage.this);// context name as per your project name
 
 
-        btnbrowse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Image"), Image_Request_Code);
+        final String quiztextdata =txtdata.getText().toString();
 
-            }
-        });
         btnupload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,19 +117,30 @@ public class addcategorypage extends AppCompatActivity {
                 }
 
                 ByteArrayOutputStream byteArrayOutputStream= new ByteArrayOutputStream();
-//                newfile.compareTo(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
-
                 compressor.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
                 byte thumb[]= byteArrayOutputStream.toByteArray();
 
 
-                UploadTask image_path = storageReference.child("user_image").child(userid+".jpg").putBytes(thumb);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+                String currentDateandTime = sdf.format(new Date());
+                UploadTask image_path = storageReference.child("user_image").child(currentDateandTime+".jpg").putBytes(thumb);
+
+
+
+                String myimg= String.valueOf(storageReference.child("Images/user_image/").getPath());
+
+
+                Toast.makeText(addcategorypage.this, myimg, Toast.LENGTH_SHORT).show();
 
                 image_path.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                         if (task.isSuccessful()){
-                            storeuserdata(task,txtdata);
+                            try {
+                                storeuserdata(task,txtdata.getText().toString());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
 
                         }else {
                             String error= task.getException().toString();
@@ -134,6 +151,10 @@ public class addcategorypage extends AppCompatActivity {
 
             }
         });
+
+
+
+
 
 
         imgview.setOnClickListener(new View.OnClickListener() {
@@ -160,31 +181,35 @@ public class addcategorypage extends AppCompatActivity {
 //Out side of Oncreate()
     }
 
-    private void storeuserdata(Task<UploadTask.TaskSnapshot> task, EditText txtdata) {
+    private void storeuserdata(Task<UploadTask.TaskSnapshot> task, String txtdata) throws IOException {
+
         String downloaduri;
+        Uri uri;
         if (task!=null){
-         downloaduri = storageReference.child("Images").getDownloadUrl().toString();
+//            downloaduri = storageReference.child("Images").child("user_image").getDownloadUrl().toString();
+
+            uri= Uri.parse(task.getResult().getStorage().getDownloadUrl().toString());
 
         }else {
-            downloaduri=imageuri.toString();
+            uri= Uri.parse(imageuri.toString());
         }
 
         Map<String, String> userdata = new HashMap<>();
         userdata.put("categoryName",txtdata.toString())  ;
-        userdata.put("categoryImage" ,downloaduri.toString());
+        userdata.put("categoryImage" ,imageuri.toString());
         firestore.collection("categories").document(userid).set(userdata).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
 
-                    }else{
-                        Toast.makeText(getApplicationContext(), "error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
-        }
+    }
 
     private void ChooseImage(){
 
@@ -218,8 +243,8 @@ public class addcategorypage extends AppCompatActivity {
 //        }
 //    }
 
-            }
-        }
+    }
+}
 
 
 //        public String GetFileExtension (Uri uri){
@@ -261,4 +286,3 @@ public class addcategorypage extends AppCompatActivity {
 //            }
 //        }
 //    }
-
