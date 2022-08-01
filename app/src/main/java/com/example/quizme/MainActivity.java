@@ -77,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.Admin) {
-            Toast.makeText(this, "Admin Panel is clicked.", Toast.LENGTH_SHORT).show();
-            Intent intent= new Intent(MainActivity.this,adminpanel.class);
+            Intent intent= new Intent(MainActivity.this,adminlogin.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

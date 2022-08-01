@@ -6,39 +6,29 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.provider.ContactsContract;
-import android.provider.MediaStore;
-//impor t android.support.annotation.NonNull;
-
-import android.os.Bundle;
 import android.view.View;
-import android.webkit.MimeTypeMap;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -52,7 +42,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.UUID;
 
 import id.zelory.compressor.Compressor;
 
@@ -61,7 +50,6 @@ public class addcategorypage extends AppCompatActivity {
     Button btnbrowse, btnupload;
     EditText txtdata;
     ImageView imgview;
-    Uri FilePathUri;
     String userid;
     StorageReference storageReference;
     DatabaseReference databaseReference;
@@ -70,15 +58,11 @@ public class addcategorypage extends AppCompatActivity {
     ProgressDialog progressDialog;
     UploadTask image_path;
     String image_name;
-     String myimg;
+    String myimg;
 
     private Uri imageuri;
     private Bitmap compressor;
 
-
-
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
-    String currentDateandTime = sdf.format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,13 +75,11 @@ public class addcategorypage extends AppCompatActivity {
         firestore=FirebaseFirestore.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
 
-        btnbrowse = (Button) findViewById(R.id.btnbrowse);
         btnupload = (Button) findViewById(R.id.btnupload);
         txtdata = (EditText) findViewById(R.id.txtdata);
         imgview = (ImageView) findViewById(R.id.image_view);
         userid=firebaseAuth.getCurrentUser().getUid();
         progressDialog = new ProgressDialog(addcategorypage.this);// context name as per your project name
-        final String quiztextdata =txtdata.getText().toString();
 
 
 
@@ -157,7 +139,7 @@ public class addcategorypage extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         myimg=uri.toString();
-                                        Toast.makeText(addcategorypage.this, myimg, Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(addcategorypage.this, myimg, Toast.LENGTH_SHORT).show();
                                         try {
                                             storeuserdata(task,txtdata.getText().toString(),myimg);
                                         } catch (IOException e) {
@@ -166,11 +148,7 @@ public class addcategorypage extends AppCompatActivity {
 
                                     }
                                 });
-//                                String myimg= String.valueOf(storageReference.child("Images/user_image/"+image_name.toString()).getPath());
-
-
                             }
-
                         else {
                             String error= task.getException().toString();
                             Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
@@ -183,20 +161,8 @@ public class addcategorypage extends AppCompatActivity {
 
     }
 
-
-
     private void storeuserdata(Task<UploadTask.TaskSnapshot> task, String txtdata,String imagename) throws IOException {
 
-//        Uri uri;
-//        if (task!=null){
-////            downloaduri = storageReference.child("Images").child("user_image").getDownloadUrl().toString();
-//
-//
-//            uri= Uri.parse(task.getResult().getStorage().getDownloadUrl().toString());
-//
-//        }else {
-//            uri= Uri.parse(imagename.toString());
-//        }
         Map<String, String> userdata = new HashMap<>();
         userdata.put("categoryName",txtdata.toString())  ;
         userdata.put("categoryImage" ,imagename);
@@ -208,7 +174,7 @@ public class addcategorypage extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Quiz Category Uploaded", Toast.LENGTH_SHORT).show();
 
                 }else{
                     Toast.makeText(getApplicationContext(), "error"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -219,7 +185,6 @@ public class addcategorypage extends AppCompatActivity {
     }
 
     private void ChooseImage(){
-
         CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).setAspectRatio(1, 1).start(addcategorypage.this);
     }
 
@@ -234,62 +199,8 @@ public class addcategorypage extends AppCompatActivity {
         imgview.setImageURI(imageuri);
 
 
-//        Toast.makeText(getApplicationContext(), "passing", Toast.LENGTH_SHORT).show();
-
-//        if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null) {
-//
-//            FilePathUri = data.getData();
-//
-//            try {
-//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
-//                imgview.setImageBitmap(bitmap);
-//            } catch (IOException e) {
-//
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-
     }
 }
 
 
-//        public String GetFileExtension (Uri uri){
-//
-//            ContentResolver contentResolver = getContentResolver();
-//            MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-//            return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
-//
-//        }
-//
-//
-//        public void UploadImage () {
-//
-//            if (FilePathUri != null) {
-//
-//                progressDialog.setTitle("Image is Uploading...");
-//                progressDialog.show();
-//                StorageReference storageReference2 = storageReference.child(System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
-//                storageReference2.putFile(FilePathUri)
-//                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                            @Override
-//                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                                String TempImageName = txtdata.getText().toString().trim();
-//                                progressDialog.dismiss();
-//                                Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
-//                                @SuppressWarnings("VisibleForTests")
-//                                uploadinfo imageUploadInfo = new uploadinfo(TempImageName, taskSnapshot.getUploadSessionUri().toString());
-//                                String ImageUploadId = databaseReference.push().getKey();
-//                                databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
-//
-//
-//                            }
-//                        });
-//            } else {
-//
-//                Toast.makeText(addcategorypage.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
-//
-//            }
-//        }
-//    }
+

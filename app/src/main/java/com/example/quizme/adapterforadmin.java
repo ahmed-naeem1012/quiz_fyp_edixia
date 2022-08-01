@@ -2,7 +2,6 @@ package com.example.quizme;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
@@ -11,26 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.WriteBatch;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class adapterforadmin extends RecyclerView.Adapter<adapterforadmin.Viewholder> {
@@ -38,8 +21,6 @@ public class adapterforadmin extends RecyclerView.Adapter<adapterforadmin.Viewho
     Context context;
     ArrayList<adminuser> userArrayList;
     private Itemclicklistener itemclicklistener;
-
-
 
 
     public adapterforadmin(Context context, ArrayList<adminuser> userArrayList,Itemclicklistener itemclicklistener) {

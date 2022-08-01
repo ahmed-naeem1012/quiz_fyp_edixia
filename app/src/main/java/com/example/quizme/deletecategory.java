@@ -51,12 +51,12 @@ public class deletecategory extends AppCompatActivity {
                             .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            Toast.makeText(getApplicationContext(), "Bis Deleted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Quiz Category Deleted", Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "Hmm Fail", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Deletion Failed"+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

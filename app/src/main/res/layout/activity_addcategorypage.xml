@@ -6,16 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".addcategorypage">
 
+    <View
+        android:id="@+id/view7"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:background="@drawable/background_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="142dp"
+        android:layout_height="154dp"
+        android:layout_centerInParent="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!--Image-->
+
+            <!--Text given to Image-->
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="137dp"
+                android:layout_height="111dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_baseline_admin_panel_settings_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New"
+                android:textColor="@color/colorPurple"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="200dp"
         android:clickable="true"
         android:focusable="true"
         android:scaleType="centerCrop"
-
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -32,22 +85,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_view" />
 
-    <Button
-        android:id="@+id/btnbrowse"
-        android:layout_width="214dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="104dp"
-        android:text="Browse"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtdata" />
 
     <Button
         android:id="@+id/btnupload"
         android:layout_width="194dp"
         android:layout_height="61dp"
-        android:layout_marginTop="104dp"
-        android:text="Upload"
-        app:layout_constraintStart_toEndOf="@+id/btnbrowse"
+        android:layout_marginTop="152dp"
+        android:background="#A07EDC"
+        android:gravity="center"
+        android:text="Upload Quiz Category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtdata" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
