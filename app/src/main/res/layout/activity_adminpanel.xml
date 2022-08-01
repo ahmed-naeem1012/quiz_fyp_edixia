@@ -66,25 +66,57 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewid"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        app:layout_constraintBottom_toTopOf="@+id/addCatB"
+        android:layout_height="450dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shimmer_view_container"
-
-        app:layout_constraintVertical_bias="0.371"
+        app:layout_constraintVertical_bias="0.538"
         tools:listitem="@layout/activity_catitem" />
 
-    <Button
-        android:id="@+id/addCatB"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_light"
-        android:background="@color/colorPrimary"
-        android:text="Add New Category"
-        android:textColor="@color/color_white"
-        android:textSize="18sp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/addCatB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_light"
+            android:text="Add New Category"
+            android:layout_margin="2dp"
+            android:textColor="@color/color_white"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <Button
+            android:id="@+id/deletecategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/roboto_light"
+            android:layout_margin="2dp"
+            android:text="Delete Category"
+
+            android:textColor="@color/color_white"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

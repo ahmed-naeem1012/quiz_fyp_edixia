@@ -1,5 +1,3 @@
-
-
 package com.example.quizme;
 
 import androidx.annotation.NonNull;
@@ -69,13 +67,15 @@ public class addcategorypage extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseFirestore firestore;
     FirebaseAuth firebaseAuth;
-    int Image_Request_Code = 7;
     ProgressDialog progressDialog;
+    UploadTask image_path;
+    String image_name;
+     String myimg;
 
-    private Uri         imageuri;
+    private Uri imageuri;
     private Bitmap compressor;
 
-    int hello=1;
+
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
     String currentDateandTime = sdf.format(new Date());
@@ -97,63 +97,7 @@ public class addcategorypage extends AppCompatActivity {
         imgview = (ImageView) findViewById(R.id.image_view);
         userid=firebaseAuth.getCurrentUser().getUid();
         progressDialog = new ProgressDialog(addcategorypage.this);// context name as per your project name
-
-
         final String quiztextdata =txtdata.getText().toString();
-
-        btnupload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-//                UploadImage();
-
-                File newfile = new File(imageuri.getPath());
-                try {
-                    compressor=new Compressor(addcategorypage.this).setMaxHeight(125).setMaxWidth(125)
-                            .setQuality(50).compressToBitmap(newfile);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                ByteArrayOutputStream byteArrayOutputStream= new ByteArrayOutputStream();
-                compressor.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
-                byte thumb[]= byteArrayOutputStream.toByteArray();
-
-
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
-                String currentDateandTime = sdf.format(new Date());
-                UploadTask image_path = storageReference.child("user_image").child(currentDateandTime+".jpg").putBytes(thumb);
-
-
-
-                String myimg= String.valueOf(storageReference.child("Images/user_image/").getPath());
-
-
-                Toast.makeText(addcategorypage.this, myimg, Toast.LENGTH_SHORT).show();
-
-                image_path.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        if (task.isSuccessful()){
-                            try {
-                                storeuserdata(task,txtdata.getText().toString());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                        }else {
-                            String error= task.getException().toString();
-                            Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-            }
-        });
-
-
-
 
 
 
@@ -170,34 +114,97 @@ public class addcategorypage extends AppCompatActivity {
                     } else {
                         ChooseImage();
                     }
-
-
                 } else {
                     ChooseImage();
                 }
             }
         });
 
-//Out side of Oncreate()
+
+        btnupload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                File newfile = new File(imageuri.getPath());
+                try {
+                    compressor=new Compressor(addcategorypage.this).setMaxHeight(125).setMaxWidth(125)
+                            .setQuality(50).compressToBitmap(newfile);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                ByteArrayOutputStream byteArrayOutputStream= new ByteArrayOutputStream();
+                compressor.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+                byte thumb[]= byteArrayOutputStream.toByteArray();
+
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+                String currentDateandTime = sdf.format(new Date());
+                image_name= currentDateandTime+".jpg";
+                image_path = storageReference.child("user_image").child(image_name).putBytes(thumb);
+
+
+
+                image_path.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull final Task<UploadTask.TaskSnapshot> task) {
+                        if (task.isSuccessful()){
+
+                                StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+                                StorageReference fileRef = storageRef.child("Images/user_image/"+image_name);
+
+                                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        myimg=uri.toString();
+                                        Toast.makeText(addcategorypage.this, myimg, Toast.LENGTH_SHORT).show();
+                                        try {
+                                            storeuserdata(task,txtdata.getText().toString(),myimg);
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }
+                                });
+//                                String myimg= String.valueOf(storageReference.child("Images/user_image/"+image_name.toString()).getPath());
+
+
+                            }
+
+                        else {
+                            String error= task.getException().toString();
+                            Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+            }
+        });
+
     }
 
-    private void storeuserdata(Task<UploadTask.TaskSnapshot> task, String txtdata) throws IOException {
 
-        String downloaduri;
-        Uri uri;
-        if (task!=null){
-//            downloaduri = storageReference.child("Images").child("user_image").getDownloadUrl().toString();
 
-            uri= Uri.parse(task.getResult().getStorage().getDownloadUrl().toString());
+    private void storeuserdata(Task<UploadTask.TaskSnapshot> task, String txtdata,String imagename) throws IOException {
 
-        }else {
-            uri= Uri.parse(imageuri.toString());
-        }
-
+//        Uri uri;
+//        if (task!=null){
+////            downloaduri = storageReference.child("Images").child("user_image").getDownloadUrl().toString();
+//
+//
+//            uri= Uri.parse(task.getResult().getStorage().getDownloadUrl().toString());
+//
+//        }else {
+//            uri= Uri.parse(imagename.toString());
+//        }
         Map<String, String> userdata = new HashMap<>();
         userdata.put("categoryName",txtdata.toString())  ;
-        userdata.put("categoryImage" ,imageuri.toString());
-        firestore.collection("categories").document(userid).set(userdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+        userdata.put("categoryImage" ,imagename);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+
+        firestore.collection("categories").document(currentDateandTime).set(userdata).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){

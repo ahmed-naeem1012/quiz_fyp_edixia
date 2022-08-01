@@ -1,26 +1,51 @@
 package com.example.quizme;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.WriteBatch;
+
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class adapterforadmin extends RecyclerView.Adapter<adapterforadmin.Viewholder> {
 
     Context context;
     ArrayList<adminuser> userArrayList;
+    private Itemclicklistener itemclicklistener;
 
-    public adapterforadmin(Context context, ArrayList<adminuser> userArrayList) {
+
+
+
+    public adapterforadmin(Context context, ArrayList<adminuser> userArrayList,Itemclicklistener itemclicklistener) {
         this.context = context;
         this.userArrayList = userArrayList;
+        this.itemclicklistener=itemclicklistener;
     }
 
     @NonNull
@@ -29,41 +54,96 @@ public class adapterforadmin extends RecyclerView.Adapter<adapterforadmin.Viewho
 
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         View view=layoutInflater.inflate(R.layout.activity_catitem,parent,false);
-        return new Viewholder(view);
+        return new Viewholder(view).linkadapter(this);
+    }
+
+    public void deletedata(){
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Viewholder Holder, int pos) {
+    public void onBindViewHolder(@NonNull final Viewholder Holder, @SuppressLint("RecyclerView") final int pos) {
 
-        adminuser adminuser = userArrayList.get(pos);
+        final adminuser adminuser = userArrayList.get(pos);
         Holder.quiz_category.setText(adminuser.getCategoryName());
+
+        Holder.deleteB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+//                Toast.makeText(context.getApplicationContext(),pos,Toast.LENGTH_SHORT).show();
+
+
+                AlertDialog.Builder builder=new AlertDialog.Builder(Holder.quiz_category.getContext());
+                builder.setTitle("Are You Sure");
+                builder.setMessage("Deleted data cant be undone");
+
+                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        itemclicklistener.onitemclick(userArrayList.get(pos));
+
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.show();
+
+            }
+        });
+
     }
+
+
 
     @Override
     public int getItemCount() {
         return userArrayList.size();
     }
 
+
+    public interface Itemclicklistener{
+        void onitemclick(adminuser adminuser);
+    }
+
     public class Viewholder extends RecyclerView.ViewHolder {
          TextView quiz_category;
          ImageView deleteB;
+         RecyclerView recyclerView;
+         private adapterforadmin adapterforadmin;
 
-        public Viewholder(@NonNull View itemView) {
+
+        public Viewholder(@NonNull final View itemView) {
             super(itemView);
             quiz_category = itemView.findViewById(R.id.namecategory);
-            deleteB= itemView.findViewById(R.id.deletecategory);
+            recyclerView=itemView.findViewById(R.id.recyclerViewid);
+            deleteB=itemView.findViewById(R.id.deletecategory);
 
 
+            itemView.findViewById(R.id.deletecategory).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adminuser adminusera = new adminuser();
 
-            deleteB.setOnClickListener(new View.OnClickListener() {
-                                           @Override
-                                           public void onClick(View view) {
-                                               Toast.makeText(context, "Delete", Toast.LENGTH_SHORT).show();
-                                           }
-                                       }
-            );
+                }
+            });
 
         }
+
+
+
+        public Viewholder linkadapter(adapterforadmin adapterforadmin){
+            this.adapterforadmin=adapterforadmin;
+            return this;
+        };
     }
+
+
+
+
 }
 

@@ -84,10 +84,7 @@ public class QuizActivity extends AppCompatActivity {
                 startActivity(new Intent(QuizActivity.this,MainActivity.class));
             }
         });
-
-
         resetTimer();
-
     }
 
     void resetTimer() {
@@ -96,7 +93,6 @@ public class QuizActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 binding.timer.setText(String.valueOf(millisUntilFinished/1000));
             }
-
             @Override
             public void onFinish() {
 
