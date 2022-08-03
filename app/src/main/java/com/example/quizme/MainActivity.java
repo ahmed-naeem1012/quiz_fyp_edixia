@@ -1,25 +1,15 @@
 package com.example.quizme;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.quizme.databinding.ActivityMainBinding;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
 
@@ -58,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                         transaction.commit();
                         break;
                     case 3:
-                        transaction.replace(R.id.content, new ProfileFragment());
+                        transaction.replace(R.id.content, new enrollstudent());
                         transaction.commit();
                         break;
                 }
@@ -77,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.Admin) {
-            Intent intent= new Intent(MainActivity.this,adminlogin.class);
+            Intent intent= new Intent(MainActivity.this,addquestions.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

@@ -37,7 +37,7 @@ public class SignupActivity extends AppCompatActivity {
         dialog.setMessage("We're creating new account...");
 
 
-        binding.createNewBtn.setOnClickListener(new View.OnClickListener() {
+        binding.createNewBtn.setOnClickListener(    new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email, pass, name, referCode;

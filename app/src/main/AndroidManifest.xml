@@ -16,6 +16,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".addquestions"
+            android:exported="false" />
+        <activity
             android:name=".deletecategory"
             android:exported="true" />
         <activity
@@ -65,9 +68,7 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Theme.AppCompat.DayNight">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.DayNight"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

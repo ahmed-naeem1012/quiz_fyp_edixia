@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment" >
+    tools:context=".enrollstudent" >
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImage"
@@ -37,17 +37,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
+
     <EditText
         android:id="@+id/nameBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/textbox"
         android:drawableLeft="@drawable/user"
-        android:drawableTint="@color/colorPurple"
         android:drawablePadding="10dp"
+        android:drawableTint="@color/colorPurple"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
@@ -57,35 +58,54 @@
         app:layout_constraintTop_toBottomOf="@+id/emailBox" />
 
     <EditText
-        android:id="@+id/passBox"
+        android:id="@+id/phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/textbox"
-        android:drawableLeft="@drawable/password"
-        android:drawableTint="@color/colorPurple"
+        android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
         android:drawablePadding="10dp"
+        android:drawableTint="@color/colorPurple"
         android:ems="10"
-        android:hint="Password"
+        android:hint="PhoneNumber"
         android:inputType="textPersonName"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameBox" />
 
-    <Button
-        android:id="@+id/updateBtn"
+    <EditText
+        android:id="@+id/course"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/textbox"
+        android:drawableLeft="@drawable/ic_baseline_subject_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="@color/colorPurple"
+        android:ems="10"
+        android:hint="Course"
+        android:inputType="textPersonName"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+    <Button
+        android:id="@+id/enroll"
+        android:layout_width="211dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="88dp"
         android:background="@drawable/button_3"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/update_profile"
         android:textColor="@color/color_white"
-        app:layout_constraintEnd_toEndOf="@+id/passBox"
-        app:layout_constraintStart_toStartOf="@+id/passBox"
-        app:layout_constraintTop_toBottomOf="@+id/passBox" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/course" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
