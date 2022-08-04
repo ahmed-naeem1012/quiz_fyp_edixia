@@ -38,12 +38,13 @@ public class enrollstudent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_enroll, container, false);
     }
-
     EditText email,name,phone,course;
     ProgressDialog pd;
     FirebaseFirestore database;
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
