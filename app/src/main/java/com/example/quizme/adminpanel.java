@@ -45,7 +45,7 @@ public class adminpanel extends AppCompatActivity {
     ArrayList<adminuser> userarraylist;
     adapterforadmin adapterforadmin;
     FirebaseFirestore database;
-    Button addcategorybtn,deletequizcategory;
+    Button addcategorybtn,deletequizcategory,addquestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class adminpanel extends AppCompatActivity {
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
         addcategorybtn=findViewById(R.id.addCatB);
         deletequizcategory=findViewById(R.id.deletecategory);
+        addquestion=findViewById(R.id.addquestion);
 
 
         database = FirebaseFirestore.getInstance();
@@ -82,6 +83,13 @@ public class adminpanel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(adminpanel.this, deletecategory.class);
+                startActivity(intent);
+            }
+        });
+        addquestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(adminpanel.this, addquestions.class);
                 startActivity(intent);
             }
         });

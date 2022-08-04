@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.Admin) {
-            Intent intent= new Intent(MainActivity.this,addquestions.class);
+            Intent intent= new Intent(MainActivity.this,adminlogin.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
