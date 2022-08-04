@@ -127,7 +127,6 @@
             android:fontFamily="@font/roboto_light"
             android:layout_margin="2dp"
             android:text="Delete Category"
-
             android:textColor="@color/color_white"
             android:textSize="18sp"
             android:layout_weight="1"

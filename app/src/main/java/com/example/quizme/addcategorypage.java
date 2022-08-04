@@ -126,7 +126,6 @@ public class addcategorypage extends AppCompatActivity {
                 image_path = storageReference.child("user_image").child(image_name).putBytes(thumb);
 
 
-
                 image_path.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull final Task<UploadTask.TaskSnapshot> task) {
