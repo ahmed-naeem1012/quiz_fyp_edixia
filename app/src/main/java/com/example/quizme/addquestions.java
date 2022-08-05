@@ -1,30 +1,39 @@
 package com.example.quizme;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+
+import java.io.Console;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
 public class addquestions extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addquestions);
+
 
         final EditText category,question,option1,option2,option3,option4,answer,index;
         final Button upload;
@@ -62,61 +71,87 @@ public class addquestions extends AppCompatActivity {
               uploaddata(categoryget,questionget,option1get,option2get,option3get,option4get,answerget,indexget);
             }
 
-            private void uploaddata(String categoryget, final String questionget, String option1get, String option2get, String option3get,
+            private void uploaddata(final String categoryget, final String questionget, String option1get, String option2get, String option3get,
                                     String option4get, String answerget, String indexget) {
 
+                 String idgetter;
                 pd.setTitle("Adding Question");
                 pd.setMessage("Please Wait");
-                pd.show();
 
-
-
-                String id= UUID.randomUUID().toString();
+                final String id= UUID.randomUUID().toString();
 
                 Map<String, Object> doc = new HashMap<>();
-                doc.put("id",id);
-                doc.put("Quiz Category", categoryget);
-                doc.put("Question",questionget);
-                doc.put("Option1",option1get);
-                doc.put("Option2",option2get);
-                doc.put("Option3",option3get);
-                doc.put("Option4",option4get);
-                doc.put("Answer",answerget);
-                doc.put("Index",indexget);
+//                doc.put("id",id);
+//                doc.put("Quiz Category", categoryget);
+//                doc.put("question",questionget);
+//                doc.put("option1",option1get);
+//                doc.put("option2",option2get);
+//                doc.put("option3",option3get);
+//                doc.put("option4",option4get);
+//                doc.put("answer",answerget);
+//                doc.put("index", indexget);
+
+                final CollectionReference categories= db.collection("categories");
 
 
 
-                db.collection("New Questions").document(id).set(doc).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+
+
+                categories.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        pd.dismiss();
-                        category.setText("");
-                        question.setText("");
-                        option1.setText("");
-                        option2.setText("");
-                        option3.setText("");
-                        option4.setText("");
-                        answer.setText("");
-                        index.setText("");
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for(QueryDocumentSnapshot documentSnapshot:queryDocumentSnapshots) {
+                            CategoryModel categoryModel = documentSnapshot.toObject(CategoryModel.class);
+                            categoryModel.setCategoryId(documentSnapshot.getId());
+                            String namegetter = categoryModel.getCategoryName();
+                            String namecheck= category.getText().toString();
+                            if (namegetter==(category.getText().toString())){
+//                                Toast.makeText(addquestions.this, namecheck + namegetter, Toast.LENGTH_SHORT).show();
+                                Log.v("ahmedn",namecheck + namegetter);
+                                Toast.makeText(addquestions.this, categoryModel.getCategoryName(), Toast.LENGTH_SHORT).show();
 
-                        Toast.makeText(addquestions.this, "New Question Added", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(addquestions.this, "Task Failed  ", Toast.LENGTH_SHORT).show();
-                        pd.dismiss();
+                        }else
+                            {
+                                Log.v("ahmedn",namecheck + namegetter);
+                                Toast.makeText(addquestions.this, "Not Equal;", Toast.LENGTH_SHORT).show();
+                            }
+//                            idgetter[0] = documentSnapshot.getId();
+//                            Toast.makeText(addquestions.this, idgetter[0], Toast.LENGTH_SHORT).show();
+//                           Log.v("ahmedn", idgetter[0]);
+                            }
                     }
                 });
 
+//                categories.document(idgetter.toString()).collection("questions").add(doc);
+
+
+//                db.collection("categories").document("PftdLjHdJkE7d5dBG31m").set(doc).
+//                        addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        pd.dismiss();
+//                        category.setText("");
+//                        question.setText("");
+//                        option1.setText("");
+//                        option2.setText("");
+//                        option3.setText("");
+//                        option4.setText("");
+//                        answer.setText("");
+//                        index.setText("");
+//
+//                        Toast.makeText(addquestions.this, "New Question Added", Toast.LENGTH_SHORT).show();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(addquestions.this, "Task Failed  ", Toast.LENGTH_SHORT).show();
+//                        pd.dismiss();
+//                    }
+//                });
+
             }
         });
-
-
-
-
-
-
 
     }
 }

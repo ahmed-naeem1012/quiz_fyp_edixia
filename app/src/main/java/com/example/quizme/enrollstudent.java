@@ -60,8 +60,6 @@ public class enrollstudent extends Fragment {
         phone=view.findViewById(R.id.phone);
         course=view.findViewById(R.id.course);
 
-
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
