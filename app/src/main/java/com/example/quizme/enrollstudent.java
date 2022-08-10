@@ -69,8 +69,9 @@ public class enrollstudent extends Fragment {
                 String fn=name.getText().toString().trim();
                 String phnum=phone.getText().toString().trim();
                 String subj=course.getText().toString().trim();
-
                 uploaddata(mail,fn,phnum,subj);
+
+
             }
 
             private void uploaddata(String mail, String fn, String phnum, String subj) {
