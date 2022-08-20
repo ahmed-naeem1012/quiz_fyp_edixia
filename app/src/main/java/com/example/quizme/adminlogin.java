@@ -33,8 +33,6 @@ public class adminlogin extends AppCompatActivity {
 
                 if (email.equals("admin@gmail.com") && password.equals("admin") )
                 {
-
-
                 Intent intent=new Intent(adminlogin.this,adminpanel.class);
                 startActivity(intent);}
                 else{

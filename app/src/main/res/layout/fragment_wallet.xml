@@ -99,4 +99,23 @@
         app:layout_constraintEnd_toEndOf="@+id/emailBox"
         app:layout_constraintStart_toStartOf="@+id/emailBox"
         app:layout_constraintTop_toBottomOf="@+id/emailBox" />
+
+    <Button
+        android:id="@+id/pictquiz"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="288dp"
+        android:background="@drawable/button_1"
+        android:drawableLeft="@drawable/spin"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:text="Start Pictorial Quiz   "
+        android:textColor="@color/color_white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view6" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.quizme;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -73,7 +74,14 @@ public class WalletFragment extends Fragment {
             }
         });
 
-
+        binding.pictquiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Pictorial Quiz", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(),picture_quiz_activity.class);
+                startActivity(intent);
+            }
+        });
 
 
         return binding.getRoot();
