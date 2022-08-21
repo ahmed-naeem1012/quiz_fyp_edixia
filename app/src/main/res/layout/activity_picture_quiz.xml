@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:gravity="center"
-            android:text="Can you identify the Technology in picture?"
+            android:text="Can you identify the Color in picture?"
             android:textSize="24sp" />
         <!-- Create a vertical LinearLayout to show the image for Technology
         that is in question, four buttons to display four options, a TextView
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/ivShowImage"
                 android:layout_margin="5dp"
-                tools:srcCompat="@drawable/android" />
+                tools:srcCompat="@drawable/picandroid" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

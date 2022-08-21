@@ -7,23 +7,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.quizme.databinding.ActivityQuizBinding;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Random;
 
 public class picture_quiz_activity extends AppCompatActivity {
 
@@ -81,7 +72,7 @@ public class picture_quiz_activity extends AppCompatActivity {
         techList.add("Cplusplus");
         techList.add("Csharp");
         techList.add("Css3");
-        techList.add("Github");
+        techList.add("Black");
         techList.add("Html5");
         techList.add("Java");
         techList.add("jQuery");
@@ -89,11 +80,11 @@ public class picture_quiz_activity extends AppCompatActivity {
         techList.add("Nodejs");
         techList.add("Php");
         techList.add("Python");
-        techList.add("Wordpress");
+        techList.add("Black");
         techList.add("Android");
         // Put all the technology names with technology image resource ids in map.
-        map.put(techList.get(0), R.drawable.bootstrap);
-        map.put(techList.get(1), R.drawable.c);
+        map.put(techList.get(0), R.drawable.picbootstra);
+        map.put(techList.get(1), R.drawable.picc);
         map.put(techList.get(2), R.drawable.codeigniter);
         map.put(techList.get(3), R.drawable.cplusplus);
         map.put(techList.get(4), R.drawable.csharp);
@@ -107,7 +98,7 @@ public class picture_quiz_activity extends AppCompatActivity {
         map.put(techList.get(12), R.drawable.php);
         map.put(techList.get(13), R.drawable.python);
         map.put(techList.get(14), R.drawable.wordpress);
-        map.put(techList.get(15), R.drawable.android);
+        map.put(techList.get(15), R.drawable.picandroid);
         // Shuffle techList so that each time we open the app it starts with
         // a random question
         Collections.shuffle(techList);
