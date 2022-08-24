@@ -66,22 +66,22 @@ public class picture_quiz_activity extends AppCompatActivity {
         // Initialize index with 0
         index = 0;
         // Populate techList with all the technology names
-        techList.add("Bootstrap");
-        techList.add("C");
-        techList.add("Codeigniter");
-        techList.add("Cplusplus");
-        techList.add("Csharp");
-        techList.add("Css3");
+        techList.add("White & Purple");
+        techList.add("White & Blue");
+        techList.add("Orange");
+        techList.add("Red");
+        techList.add("White & Purple");
+        techList.add("White & Blue");
         techList.add("Black");
-        techList.add("Html5");
-        techList.add("Java");
-        techList.add("jQuery");
-        techList.add("MySQL");
-        techList.add("Nodejs");
-        techList.add("Php");
-        techList.add("Python");
+        techList.add("White & Orange");
+        techList.add("Blue & Orange");
+        techList.add("Blue");
+        techList.add("Sole Blue");
+        techList.add("Green");
+        techList.add("Black & Purple");
+        techList.add("Yellow & Blue");
         techList.add("Black");
-        techList.add("Android");
+        techList.add("Green");
         // Put all the technology names with technology image resource ids in map.
         map.put(techList.get(0), R.drawable.picbootstra);
         map.put(techList.get(1), R.drawable.picc);
